@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Input from "../../Component/InputComponent/Input";
 import styles from "./EmployerLogin.module.css";
 import { Link, useNavigate } from "react-router-dom";
@@ -6,9 +6,11 @@ import CardComponent from "../../Component/CardComponent/CardComponent";
 import { useAlert } from "../../Context/AlertContext";
 import { employerLoginRequest } from "./EmployerAction";
 import { CONSTANTS } from "../../Consts";
+import { AuthContext } from "../../Context/AuthContext";
 
 const EmployerLogin = () => {
   const { showAlert } = useAlert();
+  const {setIsLoggedIn , isLoggedIn} = useContext(AuthContext);
   const [data, setData] = useState({});
   const navigate = useNavigate();
 
@@ -24,11 +26,12 @@ const EmployerLogin = () => {
     e.preventDefault();
     employerLoginRequest(data).then((res) => {
       console.log(res);
+      setIsLoggedIn(true);
       showAlert("Action successful!", CONSTANTS.ALERT.SUCCESS);
       navigate("/employer-login");
     });
   };
-
+console.log(isLoggedIn , "isLoggedIn")
   return (
     <section>
       <div className="container py-5">

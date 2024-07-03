@@ -1,11 +1,14 @@
 import './App.css';
 import RouterFIle from './Router/RouterFIle';
 import { AlertProvider } from './Context/AlertContext';
+import { AuthProvider } from './Context/AuthContext';
 
 function App() {
   return (
     <AlertProvider>
-      <RouterFIle />
+      <AuthProvider>
+        <RouterFIle />
+      </AuthProvider>
     </AlertProvider>
   );
 }

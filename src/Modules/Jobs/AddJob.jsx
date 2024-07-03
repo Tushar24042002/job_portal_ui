@@ -19,13 +19,7 @@ const modules = {
   ],
 };
 
-const formats = [
-  "header",
-  "list",
-  "bold",
-  "italic",
-  "underline",
-];
+const formats = ["header", "list", "bold", "italic", "underline"];
 
 const AddJob = () => {
   const [description, setDescription] = useState("");

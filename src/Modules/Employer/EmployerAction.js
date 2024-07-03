@@ -1,8 +1,8 @@
 
-import axios from 'axios';
+import axiosInstance from '../../axiosInstance';
 export const employerRegisterRequest = async (data) => {
     try {
-        const response = await axios.post("http://localhost:5000/users/create", data);
+        const response = await axiosInstance.post("/users/create", data);
         return response;
     } catch (error) {
         throw error;
@@ -11,7 +11,7 @@ export const employerRegisterRequest = async (data) => {
 
 export const employerLoginRequest = async (data) => {
     try {
-        const response = await axios.post("http://localhost:5000/users/login", data);
+        const response = await axiosInstance.post("/users/login", data);
         return response;
     } catch (error) {
         throw error;
@@ -20,7 +20,7 @@ export const employerLoginRequest = async (data) => {
 
 export const employerProfileRequest = async (data) => {
     try {
-        const response = await axios.post("http://localhost:5000/employer/add", data);
+        const response = await axiosInstance.post("/employer/add", data);
         return response;
     } catch (error) {
         throw error;

@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import styles from "./Header.module.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
+import { AuthContext } from "../../Context/AuthContext";
 
 const Header = () => {
+  const { isLoggedIn } = useContext(AuthContext);
+  console.log(isLoggedIn, "loggedin ")
   return (
     <nav className={`navbar navbar-expand-lg px-lg-5 px-3 ${styles.nav}`}>
       <div className="container-fluid">
@@ -20,7 +23,7 @@ const Header = () => {
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span className="navbar-toggler-icon"></span>   
+          <span className="navbar-toggler-icon"></span>
         </button>
         <div
           className={`offcanvas offcanvas-start ${styles.small_device_offcanvas}`}
@@ -101,13 +104,15 @@ const Header = () => {
 
             <ul className={`navbar-nav mb-2 mb-lg-0 ${styles.navbarNav}`}>
               <li className="nav-item">
-                <Link
-                  to="/login"
-                  className={`nav-link active ${styles.navLink}`}
-                  aria-current="page"
-                >
-                  Sign In
-                </Link>
+                {!isLoggedIn && (
+                  <Link
+                    to="/login"
+                    className={`nav-link active ${styles.navLink}`}
+                    aria-current="page"
+                  >
+                    Sign In
+                  </Link>
+                )}
               </li>
               <li className={`nav-item ${styles.left_border}`}>
                 <Link
