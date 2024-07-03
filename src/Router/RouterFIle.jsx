@@ -10,6 +10,7 @@ import JobPage from "../Modules/Jobs/JobPage/JobPage";
 import Login from "../Modules/Employee/Login/Login";
 import Register from "../Modules/Employee/Register/Register";
 
+
 const RouterFIle = () => {
   return (
     <>
@@ -24,7 +25,7 @@ const RouterFIle = () => {
 
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-      </Routes>
+        </Routes>
     </>
   );
 };
