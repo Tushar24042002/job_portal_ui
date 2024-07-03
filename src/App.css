@@ -1,0 +1,8 @@
+html body *, html body div .gnav * {
+  font-family: 'Noto Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+section{
+  background-color: rgb(243, 242, 241);
+  min-height: calc(100vh - 3.65rem);
+}

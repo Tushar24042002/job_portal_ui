@@ -1,0 +1,19 @@
+form .input_wrapper{
+    font-size: 1rem !important;
+    margin-bottom: 1rem;
+
+}
+
+form .input_wrapper label{
+    margin-bottom: 2px;
+}
+
+/* section {
+    background-image: url("../../../public/background.png"); 
+    background-color: rgba(0, 0, 0, 0.5); 
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    background-position: center; 
+    padding: 20px; 
+    min-height: 90vh;
+  } */

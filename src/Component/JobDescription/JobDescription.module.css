@@ -1,0 +1,19 @@
+.jd{
+    position: relative !important;   
+}
+
+.jd h1{
+    font-size: 26px !important;
+}
+
+.jd h2{
+    font-size: 20px !important;
+}
+
+.jd p{
+    font-size: 15px !important;
+}
+
+.jd ul li{
+    font-size: 14px !important;
+}

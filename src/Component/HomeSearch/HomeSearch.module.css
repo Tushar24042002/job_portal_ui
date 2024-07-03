@@ -1,0 +1,17 @@
+.home_search{
+    position: relative;
+    width: 100%;
+
+}
+
+.bg_light{
+    background-color: azure;
+}
+.home_search .input_wrapper{
+position: relative;
+
+}
+
+.home_search .input_wrapper input{
+    height: 3rem;
+}
