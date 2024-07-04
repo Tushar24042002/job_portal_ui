@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Input from "../../Component/InputComponent/Input";
-import styles from "./EmployerLogin.module.css";
+import styles from "../Login/Login.module.css";
 import { Link, useNavigate } from "react-router-dom";
 import CardComponent from "../../Component/CardComponent/CardComponent";
 import { employerRegisterRequest } from "./EmployerAction";

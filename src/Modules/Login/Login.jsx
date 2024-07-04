@@ -1,14 +1,16 @@
-import React, { useState } from "react";
-import Input from "../../../Component/InputComponent/Input";
-import styles from "../../Employer/EmployerLogin.module.css";
+import React, { useContext, useState } from "react";
+import Input from "../../Component/InputComponent/Input";
+import styles from "./Login.module.css";
 import { Link, useNavigate } from "react-router-dom";
-import CardComponent from "../../../Component/CardComponent/CardComponent";
-import { useAlert } from "../../../Context/AlertContext";
-import { employerLoginRequest } from "../../Employer/EmployerAction";
-import { CONSTANTS } from "../../../Consts";
+import CardComponent from "../../Component/CardComponent/CardComponent";
+import { useAlert } from "../../Context/AlertContext";
+import { loginRequest } from "../Employer/EmployerAction";
+import { CONSTANTS } from "../../Consts";
+import { AuthContext } from "../../Context/AuthContext";
 
 const Login = () => {
   const { showAlert } = useAlert();
+  const { setIsLoggedIn, isLoggedIn } = useContext(AuthContext);
   const [data, setData] = useState({});
   const navigate = useNavigate();
 
@@ -22,13 +24,14 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    employerLoginRequest(data).then((res) => {
-      console.log(res);
-      showAlert("Action successful!", CONSTANTS.ALERT.SUCCESS);
-      navigate("/register");
+    loginRequest(data).then((res) => {
+      setIsLoggedIn(true);
+      localStorage.setItem("Authorization", res?.data?.data?.accessToken);
+      showAlert("Logged In successful!", CONSTANTS.ALERT.SUCCESS);
+      navigate("/home");
     });
   };
-
+  console.log(isLoggedIn, "isLoggedIn");
   return (
     <section>
       <div className="container py-5">
@@ -60,7 +63,7 @@ const Login = () => {
                   </div>
                 </form>
                 <div className={`mt-4 ${styles.input_wrapper}`}>
-                  <Link to={"/register"}>
+                  <Link to={"/employer-register"}>
                     Create an Account - First Time User
                   </Link>
                 </div>

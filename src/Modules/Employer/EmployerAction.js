@@ -9,7 +9,7 @@ export const employerRegisterRequest = async (data) => {
     }
 };
 
-export const employerLoginRequest = async (data) => {
+export const loginRequest = async (data) => {
     try {
         const response = await axiosInstance.post("/users/login", data);
         return response;

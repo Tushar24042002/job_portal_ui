@@ -7,7 +7,7 @@ import { AuthContext } from "../../Context/AuthContext";
 
 const Header = () => {
   const { isLoggedIn } = useContext(AuthContext);
-  console.log(isLoggedIn, "loggedin ")
+  console.log(isLoggedIn, "loggedin ");
   return (
     <nav className={`navbar navbar-expand-lg px-lg-5 px-3 ${styles.nav}`}>
       <div className="container-fluid">
@@ -56,7 +56,7 @@ const Header = () => {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to="/link" className={`nav-link ${styles.navLink}`}>
+                <Link to="/dashboard" className={`nav-link ${styles.navLink}`}>
                   Link
                 </Link>
               </li>
@@ -116,7 +116,7 @@ const Header = () => {
               </li>
               <li className={`nav-item ${styles.left_border}`}>
                 <Link
-                  to="/employer-login"
+                  to="/login"
                   className={`nav-link ${styles.navLink}`}
                 >
                   Post Job / Employers
