@@ -37,7 +37,7 @@ const headers = [
 const EmployerDashboard = () => {
   const [tableData, setTableData] = useState([]);
   const [pageObj, setPageObj ] = useState({
-    page: 2,
+    page: 1,
     pageSize: 5,
     totalPages: 10
   });
