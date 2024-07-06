@@ -1,7 +1,6 @@
 import React from "react";
 import CardComponent from "../CardComponent/CardComponent";
 import styles from "./JobCard.module.css";
-import ReactQuill from "react-quill";
 import JobDescription from "../JobDescription/JobDescription";
 import { useNavigate } from "react-router-dom";
 
