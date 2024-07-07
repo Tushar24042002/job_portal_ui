@@ -1,4 +1,4 @@
-import axiosInstance from "../../../axiosInstance";
+import { axiosInstance } from "../../../axiosInstance";
 
 export const getEmployerJobData = async (obj) => {
     console.log(obj)

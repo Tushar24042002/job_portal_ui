@@ -32,16 +32,17 @@
     box-sizing: border-box;
     min-width: 0;
     display: inline-flex;
-    background-color: #f3f2f1;
+    background-color: #cfe2ff;
     border-radius: .25rem;
     align-items: center;
     font-size: .875rem;
     font-weight: 700;
     line-height: 1.3125rem;
-    color: #5b5b5b;
+    color: #052c65;
     padding: .1875rem .5rem;
     margin: 0 .25rem .25rem 0;
     text-transform: uppercase;
+    border: 1px solid #9ec5fe;
 }
 
 .job_description p{
