@@ -10,22 +10,21 @@ const JobCard = ({ job , style}) => {
     <CardComponent style={style} onClick={() => navigate(`/job/${job.id}`)}>
       <h4 className={styles.job_heading}>{job?.title}</h4>
       <div className={styles.company_details}>
-        <div>
           <div className={styles.company_name}>
             <p>{job?.employer?.companyName}</p>
           </div>
-          <div className={styles.company_location}>
-            <p>{job?.location}</p>
-          </div>
-        </div>
+        
       </div>
       <div className={styles.job_type}>
-        <span>{job?.type}</span>
-        <span>{job?.salary}</span>
+        <span className="alert alert-secondary">{job?.type}</span>
+        <span className="alert alert-secondary">{job?.salary}</span>
       </div>
-      <div className={styles.job_description} title={job?.description}>
-        <JobDescription data={job?.description} />
-      </div>
+      <div className={styles.company_details}>
+      <div className={styles.company_location}>
+            <p>{job?.location}</p>
+          </div>
+          </div>
+      <div className={styles.read_more}>Read More...</div>
     </CardComponent>
   );
 };

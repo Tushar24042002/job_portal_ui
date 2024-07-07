@@ -7,6 +7,7 @@
     text-overflow: ellipsis;
     margin-bottom: 0;
     font-weight: 700;
+    text-transform: capitalize;
 
 }
 .company_details{
@@ -55,4 +56,57 @@
     /* max-height: 4.5em; */
     text-transform: initial;
     margin-bottom: 0;
+}
+
+
+.location{
+    display: block;
+    position: relative;
+}
+.location div{
+    position: relative;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.location p{
+    font-size: 14px;
+}
+
+.job_details, .job_details .details{
+    display: block;
+    position: relative;
+}
+.job_details svg{
+    position: relative;
+    top: -2px;
+}
+.job_details .details .details_head{
+    position: relative;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.job_details .details .details_body{
+    padding-top: .3rem;
+}
+.job_details .details .details_body  span{
+    border: none;
+    box-sizing: border-box;
+    min-width: 0;
+    display: inline-flex;
+    border-radius: .2rem;
+    align-items: center;
+    font-size: .70rem;
+    font-weight: 700;
+    line-height: 1.3125rem;
+    padding: .15rem .8rem;
+    margin: 0 .5rem .25rem 0;
+    text-transform: uppercase;
+}
+
+
+.btn_section{
+    display: flex;
+    gap: 1rem;
 }

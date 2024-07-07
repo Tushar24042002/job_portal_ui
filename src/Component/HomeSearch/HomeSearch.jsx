@@ -14,7 +14,7 @@ const HomeSearch = () => {
     });
   }, []);
   return (
-    <section className={styles.home_search}> 
+    <main className={styles.home_search}> 
       <div className={`container py-5 `}>
         <div className="row">
           <div className="col-lg-12">
@@ -39,7 +39,7 @@ const HomeSearch = () => {
               })}
           </div>
         </div>
-      </section>
+      </main>
   );
 };
 

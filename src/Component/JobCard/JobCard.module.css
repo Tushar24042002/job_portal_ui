@@ -7,6 +7,7 @@
     text-overflow: ellipsis;
     margin-bottom: 0;
     font-weight: 700;
+    text-transform: capitalize;
 
 }
 .company_details{
@@ -26,23 +27,21 @@
     padding: 8px 0;
     display: flex;
     flex-wrap: wrap;
-    gap: 8px 10px;
+    gap: 8px 8px;
 }
 .job_type span{
+    border: none;
     box-sizing: border-box;
     min-width: 0;
     display: inline-flex;
-    background-color: #cfe2ff;
-    border-radius: .25rem;
+    border-radius: .2rem;
     align-items: center;
-    font-size: .875rem;
+    font-size: .70rem;
     font-weight: 700;
     line-height: 1.3125rem;
-    color: #052c65;
-    padding: .1875rem .5rem;
+    padding: .15rem .8rem;
     margin: 0 .25rem .25rem 0;
     text-transform: uppercase;
-    border: 1px solid #9ec5fe;
 }
 
 .job_description p{
@@ -55,4 +54,16 @@
     /* max-height: 4.5em; */
     text-transform: initial;
     margin-bottom: 0;
+}
+
+
+.read_more{
+    position: relative;
+    font-size: 15px;
+font-weight: 700;
+text-decoration: underline;
+color: #004dc1;
+line-height: 2;
+text-underline-offset : 2px;
+cursor: pointer;
 }

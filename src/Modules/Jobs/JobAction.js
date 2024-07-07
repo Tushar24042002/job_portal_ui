@@ -18,3 +18,12 @@ export const addJob = async (data) => {
         throw error;
     }
 };
+
+export const applyJob = async (id) => {
+    try {
+        const response = await axiosInstance.post(`/job/apply-job/${id}`);
+        return response;
+    } catch (error) {
+        throw error;
+    }
+};

@@ -8,10 +8,19 @@ import {
 } from "../../../Component/HomeSearch/HomeSearchAction";
 import { useNavigate, useParams } from "react-router-dom";
 import JobCard from "../../../Component/JobCard/JobCard";
+import { FaLocationDot } from "react-icons/fa6";
+import { PiBagFill } from "react-icons/pi";
+import { FaRegMoneyBillAlt } from "react-icons/fa";
+import { HiLightBulb } from "react-icons/hi";
+import Button from "../../../Component/ButtonComponent/Button";
+import { CONSTANTS } from "../../../Consts";
+import { applyJob } from "../JobAction";
+import { useAlert } from "../../../Context/AlertContext";
 
 const JobPage = () => {
   const [job, setJob] = useState([]);
   const [similarJob, setSimilarJob] = useState([]);
+  const {showAlert} = useAlert();
   const { id } = useParams();
   const navigate = useNavigate();
 
@@ -26,30 +35,107 @@ const JobPage = () => {
     });
   }, [id]);
 
+
+  const applyJobFunction=()=>{
+    applyJob(id).then((res)=>{
+      showAlert("Job Apply successfully!", CONSTANTS.ALERT.SUCCESS);
+    })
+  }
+
   return (
     <section>
       <div className="container py-4">
         <div className="row">
-          <div className="col-lg-8">
+          <div className="col-lg-8 mb-3">
             <CardComponent>
-              <div className="p-3">
+              <div className="p-lg-3 p-0">
                 <h4 className={styles.job_heading}>{job?.title}</h4>
                 <div className={styles.company_details}>
-                  <div>
-                    <div className={styles.company_name}>
-                      <p>{job?.employer?.companyName}</p>
-                    </div>
-                    <div className={styles.company_location}>
-                      <p>{job?.location}</p>
-                    </div>
+                  <div className={styles.company_name}>
+                    <p>{job?.employer?.companyName}</p>
                   </div>
                 </div>
-                <div className={styles.job_type}>
-                  <span>{job?.type}</span>
-                  <span>{job?.salary}</span>
+                <hr />
+                <div className={styles.job_details}>
+                  {job?.type && (
+                    <div className={"d-flex align-items-start mb-3"}>
+                      <div>
+                        <PiBagFill size={16} color="rgb(118, 118, 118)" />
+                      </div>
+                      <div className={`ps-3 ${styles.details}`}>
+                        <div className={styles.details_head}>Job Type</div>
+                        <div className={styles.details_body}>
+                          <span className="alert alert-success">
+                            {job?.type}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                  {job?.salary && (
+                    <div className={"d-flex align-items-start mb-3"}>
+                      <div>
+                        <FaRegMoneyBillAlt
+                          size={16}
+                          color="rgb(118, 118, 118)"
+                        />
+                      </div>
+                      <div className={`ps-3 ${styles.details}`}>
+                        <div className={styles.details_head}>Salary Range</div>
+                        <div className={styles.details_body}>
+                          <span className="alert alert-success">
+                            {job?.salary}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {job?.requirements && (
+                    <div className={"d-flex align-items-start mb-3"}>
+                      <div>
+                        <HiLightBulb size={16} color="rgb(118, 118, 118)" />
+                      </div>
+                      <div className={`ps-3 ${styles.details}`}>
+                        <div className={styles.details_head}>Salary Range</div>
+                        <div className={styles.details_body}>
+                          {job?.requirements
+                            ?.split("|")
+                            ?.map((data, subIndex) => (
+                              <span className="alert alert-primary">
+                                {data}
+                              </span>
+                            ))}
+                        </div>
+                      </div>
+                    </div>
+                  )}
                 </div>
+                <hr />
+                <div className={styles.location}>
+                  <div>Location</div>
+                  <p>
+                    <FaLocationDot size={16} color="rgb(118, 118, 118)" />
+                    <span className="ms-2">{job?.location}</span>
+                  </p>
+                </div>
+                <hr />
                 <div className={styles.job_description}>
                   <JobDescription data={job?.description} />
+                </div>
+                <hr />
+                <div className={styles.btn_section}>
+                  <Button
+                    type={CONSTANTS.BUTTON.PRIMARY}
+                    value="Apply Now"
+                    onClick={() => applyJobFunction()}
+                  />
+
+                  <Button
+                    type={CONSTANTS.BUTTON.OUTLINE_SECONDARY}
+                    value="Saved"
+                    onClick={() => navigate("/add-job")}
+                  />
                 </div>
               </div>
             </CardComponent>
