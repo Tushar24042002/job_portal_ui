@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import CardComponent from "../../../Component/CardComponent/CardComponent";
 import styles from "./JobPage.module.css";
 import JobDescription from "../../../Component/JobDescription/JobDescription";
@@ -16,6 +16,9 @@ import Button from "../../../Component/ButtonComponent/Button";
 import { CONSTANTS } from "../../../Consts";
 import { applyJob } from "../JobAction";
 import { useAlert } from "../../../Context/AlertContext";
+import { AuthContext } from "../../../Context/AuthContext";
+import Modal from "../../../Component/ModalComponent/Modal";
+import LoginModal from "../../../Component/LoginModal/LoginModal";
 
 const JobPage = () => {
   const [job, setJob] = useState([]);
@@ -23,6 +26,9 @@ const JobPage = () => {
   const {showAlert} = useAlert();
   const { id } = useParams();
   const navigate = useNavigate();
+  const [isLoginShow, setIsLoginShow] = useState(false);
+
+  const {isLoggedIn} = useContext(AuthContext);
 
   useEffect(() => {
     getSingleJob(id).then((res) => {
@@ -37,10 +43,18 @@ const JobPage = () => {
 
 
   const applyJobFunction=()=>{
-    applyJob(id).then((res)=>{
-      showAlert("Job Apply successfully!", CONSTANTS.ALERT.SUCCESS);
-    })
+    if(isLoggedIn){
+      applyJob(id).then((res)=>{
+        showAlert("Job Apply successfully!", CONSTANTS.ALERT.SUCCESS);
+      })
+    }
+    else{
+    setIsLoginShow(true);
+    }
+  
   }
+
+
 
   return (
     <section>
@@ -155,6 +169,10 @@ const JobPage = () => {
           </div>
         </div>
       </div>
+      {
+        isLoginShow &&     <LoginModal setIsShow={()=>setIsLoginShow(false) } route={`/job/${id}`}/>
+      }
+ 
     </section>
   );
 };

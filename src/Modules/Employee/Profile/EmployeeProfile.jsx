@@ -6,7 +6,6 @@ import CardComponent from "../../../Component/CardComponent/CardComponent";
 import { updateEmployeeProfile } from "./EmployeeAction";
 import { useAlert } from "../../../Context/AlertContext";
 import { CONSTANTS } from "../../../Consts";
-import TextArea from "../../../Component/TextAreaComponent/TextArea";
 import Select from "../../../Component/SelectComponent/Select";
 
 const EmployeeProfile = () => {
@@ -14,9 +13,10 @@ const EmployeeProfile = () => {
 
   const { showAlert } = useAlert();
   const navigate = useNavigate();
-  const [file, setFile] = useState();
+  const [file, setFile] = useState(null);
 
-  function handleChange(event) {
+  const  handleChange=(event) =>{
+    console.log(event.target.files)
     setFile(event.target.files[0]);
   }
 
@@ -72,7 +72,6 @@ const EmployeeProfile = () => {
                     <Input
                       type="file"
                       name="resume"
-                      value={null}
                       onChange={handleChange}
                     />
                   </div>

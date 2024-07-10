@@ -28,7 +28,13 @@ const Login = () => {
       setIsLoggedIn(true);
       localStorage.setItem("Authorization", res?.data?.data?.accessToken);
       showAlert("Logged In successful!", CONSTANTS.ALERT.SUCCESS);
-      navigate("/home");
+      let prevRoute = localStorage.getItem("prev_route");
+      if (prevRoute != null && prevRoute != undefined) {
+        localStorage.removeItem("prev_route");
+        navigate(prevRoute);
+      } else {
+        navigate("/home");
+      }
     });
   };
   console.log(isLoggedIn, "isLoggedIn");

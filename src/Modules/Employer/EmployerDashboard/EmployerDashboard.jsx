@@ -6,6 +6,7 @@ import Table from "../../../Component/TableComponent/Table";
 import { getEmployerJobData } from "./EmployerDashboardAction";
 import CardComponent from "../../../Component/CardComponent/CardComponent";
 import Pagination from "../../../Component/Pagination/Pagination";
+import Title from "../../../Component/Title/Title";
 
 const headers = [
   {
@@ -64,7 +65,14 @@ const EmployerDashboard = () => {
 
   return (
     <section>
-      <div className="container py-5">
+      <div className="container pb-5">
+      <div className="row">
+          <div className="col-lg-12">
+            <div className="title">
+            <Title size={2}>Employer Dashboard</Title>
+            </div>
+          </div>
+        </div>
         <div className="row">
           <div className="col-lg-12">
             <CardComponent style={{ backgroundColor: "white" }}>

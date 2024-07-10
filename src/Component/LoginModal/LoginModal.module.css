@@ -1,0 +1,17 @@
+.login_modal{
+    position: relative;
+}
+.login_modal h2{
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.login_modal .btn_section{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding-top: 1rem;
+}
+.login_modal .btn_section div{
+    width: 50%;
+}

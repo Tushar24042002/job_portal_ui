@@ -110,3 +110,9 @@
     display: flex;
     gap: 1rem;
 }
+
+@media(max-width : 551px){
+    .btn_section div{
+        width: 50% ;
+    }
+}

@@ -12,9 +12,9 @@ const Table = ({
     <>
       <div className={`table-responsive mt-4 ${styles.table_border}`}>
         <table className={`table`}>
-          <thead class="table-light">
+          <thead className="table-light">
             <tr>
-              {headers.map((header, index) => (
+              {headers && headers.map((header, index) => (
                 <th key={index}>{header["key"]}</th>
               ))}
             </tr>
@@ -28,7 +28,6 @@ const Table = ({
               >
                 {headers.map(
                   (header, colIndex) => (
-                    console.log(row),
                     (<td key={colIndex}>{header["data"](row, rowIndex)}</td>)
                   )
                 )}
@@ -43,7 +42,7 @@ const Table = ({
 };
 
 Table.propTypes = {
-  headers: PropTypes.arrayOf(PropTypes.string).isRequired,
+  headers: PropTypes.arrayOf(PropTypes.array).isRequired,
   data: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 

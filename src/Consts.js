@@ -4,6 +4,11 @@ export const CONSTANTS = {
         DANGER: "danger",
         WARNING: "warning"
     },
+    ROLE  :{
+        ADMIN :"admin",
+        EMPLOYER :"employer",
+        JOB_SEEKER :"job_seeker"
+    },
     BUTTON: {
         PRIMARY: "btn-primary",
         SECONDARY: "btn-secondary",
@@ -15,5 +20,11 @@ export const CONSTANTS = {
         OUTLINE_WARNING: "btn-outline-warning",
         OUTLINE_DANGER: "btn-outline-danger",
         OUTLINE_SUCCESS: "btn-outline-success",
-    }
+    },
+    EXPERIENCE_ARR :[
+        {key : "1 Year" ,value : "1 Year" },
+        {key : "1 Year" ,value : "1 Year" },
+        {key : "1 Year" ,value : "1 Year" },
+
+    ]
 }

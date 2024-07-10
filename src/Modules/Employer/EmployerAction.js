@@ -27,3 +27,12 @@ export const employerProfileRequest = async (data) => {
     }
 };
 
+
+export const validateToken = async () => {
+    try {
+        const response = await axiosInstance.get("/users/validate-token");
+        return response;
+    } catch (error) {
+        throw error;
+    }
+};

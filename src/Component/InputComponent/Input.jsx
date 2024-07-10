@@ -5,8 +5,9 @@ const Input = ({
   type = "text",
   name = "name",
   value,
-  onInput,
+  onInput = null,
   placeHolder,
+  onChange = null,
 }) => {
   return type === "submit" ? (
     <input
@@ -21,6 +22,7 @@ const Input = ({
       name={name}
       value={value}
       onInput={onInput}
+      onChange={onChange}
       placeholder={placeHolder}
     />
   );
