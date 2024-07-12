@@ -24,7 +24,8 @@ import { useContext } from "react";
 import { LoadingContext } from "./Context/LoaderContext";
 
 const axiosInstance = axios.create({
-  baseURL: "http://localhost:5000",
+  // baseURL: "https://job-application-cqod.onrender.com",
+  baseURL :"http://localhost:5000",
 });
 
 const useAxiosInterceptors = () => {

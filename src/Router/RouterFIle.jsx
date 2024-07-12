@@ -48,7 +48,7 @@ const RouterFIle = () => {
           userRole === CONSTANTS.ROLE.EMPLOYER && (
             <>
              <Route path="/job/:id" element={<JobPage />} />
-             <Route path="/employer-profile" element={<EmployerProfile />} />
+             <Route path="/profile" element={<EmployerProfile />} />
              <Route path="/add-job" element={<AddJob />} />
              <Route path="/dashboard" element={<EmployerDashboard />} />
             </>

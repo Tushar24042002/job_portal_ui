@@ -3,7 +3,7 @@ import Input from "../../../Component/InputComponent/Input";
 import styles from "../../Login/Login.module.css";
 import { Link, useNavigate } from "react-router-dom";
 import CardComponent from "../../../Component/CardComponent/CardComponent";
-import { employerProfileRequest } from "./../EmployerAction";
+import { employerProfileRequest, getEmployerProfile } from "./../EmployerAction";
 import { useAlert } from "../../../Context/AlertContext";
 import { CONSTANTS } from "../../../Consts";
 import TextArea from "../../../Component/TextAreaComponent/TextArea";
@@ -15,6 +15,16 @@ const EmployerProfile = () => {
 
   const { showAlert } = useAlert();
   const navigate = useNavigate();
+
+
+useEffect(()=>{
+getEmployerProfile().then((res)=>{
+  console.log(res)
+}).catch((err)=>{
+  console.log(err);
+})
+},[]);
+
 
   const handleInput = (e) => {
     const { name, value } = e.target;

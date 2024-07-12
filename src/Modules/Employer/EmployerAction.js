@@ -26,6 +26,14 @@ export const employerProfileRequest = async (data) => {
         throw error;
     }
 };
+export const getEmployerProfile = async () => {
+    try {
+        const response = await axiosInstance.get("/employer/employer-profile");
+        return response;
+    } catch (error) {
+        throw error;
+    }
+};
 
 
 export const validateToken = async () => {
