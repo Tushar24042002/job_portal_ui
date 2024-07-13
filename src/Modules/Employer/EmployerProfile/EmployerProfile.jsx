@@ -3,28 +3,40 @@ import Input from "../../../Component/InputComponent/Input";
 import styles from "../../Login/Login.module.css";
 import { Link, useNavigate } from "react-router-dom";
 import CardComponent from "../../../Component/CardComponent/CardComponent";
-import { employerProfileRequest, getEmployerProfile } from "./../EmployerAction";
+import {
+  employerProfileRequest,
+  getEmployerProfile,
+} from "./../EmployerAction";
 import { useAlert } from "../../../Context/AlertContext";
 import { CONSTANTS } from "../../../Consts";
 import TextArea from "../../../Component/TextAreaComponent/TextArea";
+import DropDown from "../../../Component/DropDown/DropDown";
+
+const employeeRange = [
+  "1-50 Employees",
+  "50-100 Employees",
+  "100-200 Employees",
+  "200-500 Employees",
+  "500-1000 Employees",
+  "1000+ Employees",
+];
 
 const EmployerProfile = () => {
-  const [data, setData] = useState({
-    userId: 2,
-  });
+  const [data, setData] = useState({});
 
   const { showAlert } = useAlert();
   const navigate = useNavigate();
 
-
-useEffect(()=>{
-getEmployerProfile().then((res)=>{
-  console.log(res)
-}).catch((err)=>{
-  console.log(err);
-})
-},[]);
-
+  useEffect(() => {
+    getEmployerProfile()
+      .then((res) => {
+        console.log(res);
+        setData(res?.data?.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   const handleInput = (e) => {
     const { name, value } = e.target;
@@ -56,7 +68,7 @@ getEmployerProfile().then((res)=>{
                     <Input
                       type="text"
                       name="companyName"
-                      value={data["companyName"]}
+                      value={data["companyName"] || null}
                       onInput={handleInput}
                     />
                   </div>
@@ -65,7 +77,7 @@ getEmployerProfile().then((res)=>{
                     <TextArea
                       type="email"
                       name="companyDescription"
-                      value={data["companyDescription"]}
+                      value={data["companyDescription"] || null}
                       onInput={handleInput}
                     />
                   </div>
@@ -80,12 +92,22 @@ getEmployerProfile().then((res)=>{
                   </div>
                   <div className={styles.input_wrapper}>
                     <label>Employee Range</label>
-                    <Input
-                      type="text"
-                      name="employeeRange"
+                    <DropDown
+                      name={"employeeRange"}
                       value={data["employeeRange"]}
-                      onInput={handleInput}
-                    />
+                      onChangeHandler={handleInput}
+                    >
+                        <option value={""}>Select Option</option>
+                      {employeeRange &&
+                        employeeRange?.map((e, index) => {
+                        
+                          return (
+                            <option value={e} key={index}>
+                              {e}
+                            </option>
+                          );
+                        })}
+                    </DropDown>
                   </div>
                   <div className={`mt-4 ${styles.input_wrapper}`}>
                     <Input type="submit" value={"Add Profile"} />

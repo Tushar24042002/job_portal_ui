@@ -14,6 +14,7 @@ import { AuthContext } from "../Context/AuthContext";
 import { CONSTANTS } from "../Consts";
 import AppliedJobs from "../Modules/Employee/AppliedJobs/AppliedJobs";
 import EmployeeProfile from "../Modules/Employee/Profile/EmployeeProfile";
+import OtpSecreen from "../Modules/Otp/OtpSecreen";
 
 const RouterFIle = () => {
   const { isLoggedIn, setIsLoggedIn, setUserRole, userRole } =
@@ -58,6 +59,7 @@ const RouterFIle = () => {
         <Route path="/employer-register" element={<EmployerRegister />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/otp" element={<OtpSecreen/>}/>
 
       </Routes>
     </>

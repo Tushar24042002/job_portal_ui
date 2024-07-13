@@ -27,8 +27,9 @@ const EmployerRegister = () => {
     e.preventDefault();
     employerRegisterRequest(data).then((res) => {
       console.log(res);
+      localStorage.setItem("email",res?.data?.email);
       showAlert("Action successful!", CONSTANTS.ALERT.SUCCESS);
-      navigate("/employer-login");
+      navigate("/otp");
     });
   };
 
