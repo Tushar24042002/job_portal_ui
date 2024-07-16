@@ -9,3 +9,12 @@ export const getEmployerJobData = async (obj) => {
         throw error; 
     }
 };
+
+export const getEmployerJobApplicationData = async (obj, jobId) => {
+    try {
+        const response = await axiosInstance.get(`/employer/employer-job-application/${jobId}?page=${obj?.page}&pageSize=${obj?.pageSize}`);
+        return response
+    } catch (error) {
+        throw error; 
+    }
+};

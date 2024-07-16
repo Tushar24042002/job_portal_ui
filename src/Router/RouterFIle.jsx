@@ -15,6 +15,7 @@ import { CONSTANTS } from "../Consts";
 import AppliedJobs from "../Modules/Employee/AppliedJobs/AppliedJobs";
 import EmployeeProfile from "../Modules/Employee/Profile/EmployeeProfile";
 import OtpSecreen from "../Modules/Otp/OtpSecreen";
+import EmployerJobApplicationDashboard from "../Modules/Employer/EmployerJobApplicationDashboard/EmployerJobApplicationDashboard";
 
 const RouterFIle = () => {
   const { isLoggedIn, setIsLoggedIn, setUserRole, userRole } =
@@ -52,6 +53,7 @@ const RouterFIle = () => {
              <Route path="/profile" element={<EmployerProfile />} />
              <Route path="/add-job" element={<AddJob />} />
              <Route path="/dashboard" element={<EmployerDashboard />} />
+             <Route path="/job-application/:jobId" element={<EmployerJobApplicationDashboard />} />
             </>
           )
         }

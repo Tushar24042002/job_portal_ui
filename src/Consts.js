@@ -26,5 +26,18 @@ export const CONSTANTS = {
         {key : "1 Year" ,value : "1 Year" },
         {key : "1 Year" ,value : "1 Year" },
 
-    ]
+    ],
+    JOB_STATUS_IDS :  {
+        1: 'Pending',
+        2: 'Submitted',
+        3: 'Reviewed',
+        4: 'Interview Scheduled',
+        5: 'Interviewed',
+        6: 'Offered',
+        7: 'Accepted',
+        8: 'Rejected',
+        9: 'Withdrawn'
+    },
+    
+    
 }

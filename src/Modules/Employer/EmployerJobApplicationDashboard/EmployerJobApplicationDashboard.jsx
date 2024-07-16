@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import Button from "../../../Component/ButtonComponent/Button";
 import { CONSTANTS } from "../../../Consts";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Table from "../../../Component/TableComponent/Table";
-import { getEmployerJobData } from "./EmployerDashboardAction";
+import { getEmployerJobData } from "../EmployerDashboard/EmployerDashboardAction";
 import CardComponent from "../../../Component/CardComponent/CardComponent";
 import Pagination from "../../../Component/Pagination/Pagination";
 import Title from "../../../Component/Title/Title";
 import { formatDateTime } from "../../../Utils";
+import { getEmployerJobApplicationData } from "../EmployerDashboard/EmployerDashboardAction";
 
 const headers = [
   {
@@ -15,36 +16,38 @@ const headers = [
     data: (e, index) => index + 1,
   },
   {
-    key: "Job Title",
-    data: (e) => e.title || "NA",
+    key: "User",
+    data: (e) => e?.jobSeeker?.user?.email || "NA",
   },
   {
     key: "Applied at",
-    data: (e) => formatDateTime(e.createdAt) || "NA",
+    data: (e) => formatDateTime(e?.appliedAt) || "NA",
   },
   {
-    key: "Salary Range",
-    data: (e) => e.salary || "NA",
+    key: "Experience",
+    data: (e) => e?.jobSeeker?.experience || "NA",
   },
   {
-    key: "Job Type",
-    data: (e) => e.type || "NA",
+    key: "Status",
+    data: (e) => e.status || "NA",
   },
   {
-    key: "Applications",
+    key: "Action",
     data: (e) => e.applicationsCount,
   },
 ];
 
-const EmployerDashboard = () => {
+const EmployerJobApplicationDashboard = () => {
   const [tableData, setTableData] = useState([]);
+  
   const [pageObj, setPageObj ] = useState({
     page: 1,
     pageSize: 5,
     totalPages: 10
   });
   const navigate = useNavigate();
-
+// const { jobId } = useParams();
+const jobId = 44;
   const clickFunction = () => {
     alert("working");
   };
@@ -54,10 +57,10 @@ const EmployerDashboard = () => {
   }, []);
 
   const getData = () => {
-    getEmployerJobData(pageObj)
+    getEmployerJobApplicationData(pageObj, jobId)
       .then((res) => {
         console.log(res);
-        setTableData(res?.data?.data);
+        setTableData(res?.data?.data?.data);
       })
       .catch((err) => {
         console.log(err);
@@ -87,8 +90,7 @@ const EmployerDashboard = () => {
               <Table
                 headers={headers}
                 data={tableData}
-                rowClickable={true}
-                clickFunction={clickFunction}
+                rowClickable={false}
               />
               <Pagination currentPage={pageObj.page} totalPages={pageObj.totalPages} onChange={null}/>
             </CardComponent>
@@ -99,4 +101,4 @@ const EmployerDashboard = () => {
   );
 };
 
-export default EmployerDashboard;
+export default EmployerJobApplicationDashboard;

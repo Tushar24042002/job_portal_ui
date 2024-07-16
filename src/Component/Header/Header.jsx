@@ -80,7 +80,7 @@ const Header = () => {
                 <>
                   <li className="nav-item">
                     <Link
-                      to="/employer-profile"
+                      to="/profile"
                       className={`nav-link ${styles.navLink}`}
                     >
                       Employer profile
