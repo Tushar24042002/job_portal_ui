@@ -1,0 +1,19 @@
+.otp_box{
+    position: relative;
+}
+.otp_box .title{
+    margin-bottom: 0.5rem;
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+.otp_box input{
+    width: 2.5rem !important;
+    aspect-ratio: 1;
+}
+.btn_section{
+    margin-top: 1rem;
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}

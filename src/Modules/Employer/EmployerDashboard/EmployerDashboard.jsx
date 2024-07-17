@@ -45,8 +45,8 @@ const EmployerDashboard = () => {
   });
   const navigate = useNavigate();
 
-  const clickFunction = () => {
-    alert("working");
+  const clickFunction = (data) => {
+    navigate(`/job-application/${data?.id}`);
   };
 
   useEffect(() => {

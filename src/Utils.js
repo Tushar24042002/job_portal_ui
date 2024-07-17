@@ -1,4 +1,4 @@
-export const formatDateTime=(dateString)=> {
+export const formatDateTime = (dateString) => {
     const date = new Date(dateString);
 
     const options = {

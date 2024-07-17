@@ -46,11 +46,7 @@ const EmployerJobApplicationDashboard = () => {
     totalPages: 10
   });
   const navigate = useNavigate();
-// const { jobId } = useParams();
-const jobId = 44;
-  const clickFunction = () => {
-    alert("working");
-  };
+const { jobId } = useParams();
 
   useEffect(() => {
     getData();
@@ -80,13 +76,7 @@ const jobId = 44;
         <div className="row">
           <div className="col-lg-12">
             <CardComponent style={{ backgroundColor: "white" }}>
-              <div>
-                <Button
-                  type={CONSTANTS.BUTTON.OUTLINE_PRIMARY}
-                  value="Add Job"
-                  onClick={() => navigate("/add-job")}
-                />
-              </div>
+             
               <Table
                 headers={headers}
                 data={tableData}
