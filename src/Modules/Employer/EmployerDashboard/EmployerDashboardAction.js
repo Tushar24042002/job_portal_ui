@@ -18,3 +18,13 @@ export const getEmployerJobApplicationData = async (obj, jobId) => {
         throw error; 
     }
 };
+
+
+export const updateJobStatusByEmployer = async (data, id) => {
+    try {
+        const response = await axiosInstance.post(`/job/update-job-status/${id}`, data);
+        return response;
+    } catch (error) {
+        throw error;
+    }
+};

@@ -5,17 +5,20 @@ import CardComponent from "../../Component/CardComponent/CardComponent";
 import Button from "../../Component/ButtonComponent/Button";
 import { CONSTANTS } from "../../Consts";
 import { verifyOTP } from "./OtpAction";
+import { useNavigate } from "react-router-dom";
 export default function OtpSecreen() {
   const [otp, setOtp] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
+   const email = localStorage.getItem("email");
     let obj = {
-      email :"tushargg@yopmail.com",
+      email :email,
       otp :otp
     }
     if (otp && otp.length > 5) {
       verifyOTP(obj).then((res) => {
-        console.log(res);
+        navigate("/login");
       });
     }
   }, [otp]);

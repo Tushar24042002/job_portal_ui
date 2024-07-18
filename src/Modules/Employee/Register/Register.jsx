@@ -26,7 +26,7 @@ const Register = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     employerRegisterRequest(data).then((res) => {
-      console.log(res);
+      localStorage.setItem("email",data?.email);
       showAlert("Action successful!", CONSTANTS.ALERT.SUCCESS);
       navigate("/login");
     });
