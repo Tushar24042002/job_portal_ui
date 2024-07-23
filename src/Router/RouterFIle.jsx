@@ -31,7 +31,7 @@ const RouterFIle = () => {
       .catch((err) => {
         console.log(err);
       });
-  }, [isLoggedIn]);
+  }, [isLoggedIn === false]);
 
   return (
     <>

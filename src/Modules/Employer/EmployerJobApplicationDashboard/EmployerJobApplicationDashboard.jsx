@@ -12,11 +12,11 @@ import Pagination from "../../../Component/Pagination/Pagination";
 import Title from "../../../Component/Title/Title";
 import { formatDateTime } from "../../../Utils";
 import { getEmployerJobApplicationData } from "../EmployerDashboard/EmployerDashboardAction";
-
-
+import { useAlert } from "../../../Context/AlertContext";
 
 const EmployerJobApplicationDashboard = () => {
   const [tableData, setTableData] = useState([]);
+  const {showAlert} = useAlert();
 
   const [pageObj, setPageObj] = useState({
     page: 1,
@@ -41,19 +41,33 @@ const EmployerJobApplicationDashboard = () => {
       });
   };
 
-  const handleUpdateStatus = (id) => {
+  const handleUpdateStatus = (e,id) => {
     const data = {
-      status: 3,
+      status: e?.target?.value,
     };
     updateJobStatusByEmployer(data, id)
       .then((res) => {
-        console.log(res);
+        showAlert(res?.data?.message, CONSTANTS.ALERT.SUCCESS);
+        getData();
       })
       .catch((err) => {
         console.log(err);
       });
   };
 
+  const statusFunction = (id) => {
+    return <span className="">{CONSTANTS?.JOB_STATUS_IDS[id]}</span>;
+  };
+
+  const jobAction = (id, currStatus) => {
+    return (
+      <select name="" id="" onChange={(e) => handleUpdateStatus(e, id)} value={currStatus}>
+        {Object.keys(CONSTANTS.JOB_STATUS_IDS).map((data, index) => {
+          return <option value={data} disabled={currStatus >= data}>{CONSTANTS.JOB_STATUS_IDS[data]}</option>;
+        })}
+      </select>
+    );
+  };
   const headers = [
     {
       key: "S No",
@@ -73,11 +87,11 @@ const EmployerJobApplicationDashboard = () => {
     },
     {
       key: "Status",
-      data: (e) => e.status || "NA",
+      data: (e) => statusFunction(e?.status) || "NA",
     },
     {
       key: "Action",
-      data: (e) => <div className="btn btn-primary" onClick={() => handleUpdateStatus(e.id)}>Update</div>,
+      data: (e) => jobAction(e?.id, e?.status) || "-",
     },
   ];
 
